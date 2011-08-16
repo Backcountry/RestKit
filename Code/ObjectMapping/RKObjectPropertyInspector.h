@@ -8,14 +8,22 @@
 
 #import <Foundation/Foundation.h>
 
+@class NSEntityDescription;
 
 @interface RKObjectPropertyInspector : NSObject {
 	NSMutableDictionary* _cachedPropertyNamesAndTypes;
 }
 
++ (RKObjectPropertyInspector*)sharedInspector;
+
 /**
  * Returns a dictionary of names and types for the properties of a given class
  */
 - (NSDictionary *)propertyNamesAndTypesForClass:(Class)objectClass;
+
+/**
+ Returns the Class type of the specified property on the object class
+ */
+- (Class)typeForProperty:(NSString*)propertyName ofClass:(Class)objectClass;
 
 @end
